@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — Alpha Charlie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06090f;
+      --card: #0d1220;
+      --raised: #131929;
+      --b: #1a2436;
+      --bhi: #263348;
+      --red: #e63946;
+      --teal: #2ec4b6;
+      --blu: #4895ef;
+      --amb: #f4a261;
+      --hi: #f0f4ff;
+      --mid: #8899aa;
+      --lo: #506070;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--hi);
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content:'';
+      position:fixed; inset:0; z-index:0;
+      background-image:
+        linear-gradient(var(--b) 1px, transparent 1px),
+        linear-gradient(90deg, var(--b) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.5;
+      pointer-events:none;
+    }
+
+    body::after {
+      content:'';
+      position:fixed; bottom:-200px; right:-200px;
+      width:500px; height:500px; z-index:0;
+      background: radial-gradient(circle, #2ec4b614 0%, transparent 70%);
+      pointer-events:none;
+    }
+
+    .wrap {
+      position: relative; z-index:1;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 0 48px;
+      border-bottom: 1px solid var(--b);
+      margin-bottom: 56px;
+    }
+
+    .logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+    .logo .a { color: var(--red); }
+    .logo .sep { color: var(--lo); margin: 0 3px; }
+    .logo .c { color: var(--teal); }
+
+    .nav-links { display:flex; gap:24px; }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--mid);
+      text-decoration: none;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--hi); }
+    .nav-links a.active { color: var(--teal); }
+
+    .page-header {
+      margin-bottom: 48px;
+      animation: fadeUp .5s ease both;
+    }
+    .page-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      border: 1px solid #2ec4b630;
+      background: #2ec4b610;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(36px, 6vw, 52px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .subtitle { font-size: 16px; color: var(--mid); }
+
+    .section {
+      background: var(--card);
+      border: 1px solid var(--b);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 16px;
+      animation: fadeUp .5s ease both;
+    }
+    .section:nth-child(2) { animation-delay:.05s }
+    .section:nth-child(3) { animation-delay:.1s }
+    .section:nth-child(4) { animation-delay:.15s }
+    .section:nth-child(5) { animation-delay:.2s }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--lo);
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--hi);
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
+    }
+    p { color: var(--mid); margin-bottom: 12px; font-size: 15px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* FAQ */
+    .faq-item {
+      border-bottom: 1px solid var(--b);
+      padding: 16px 0;
+    }
+    .faq-item:first-child { padding-top: 0; }
+    .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .faq-q {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--hi);
+      margin-bottom: 8px;
+    }
+    .faq-a { font-size: 14px; color: var(--mid); margin: 0; }
+
+    /* Contact card */
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--raised);
+      border: 1px solid var(--bhi);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-top: 16px;
+      text-decoration: none;
+      transition: border-color .2s, background .2s;
+    }
+    .contact-card:hover {
+      border-color: var(--teal);
+      background: #2ec4b608;
+    }
+    .contact-icon {
+      width: 44px; height: 44px;
+      background: #2ec4b615;
+      border: 1px solid #2ec4b630;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .contact-label { font-size: 13px; color: var(--lo); margin-bottom: 2px; }
+    .contact-value { font-size: 15px; color: var(--hi); font-weight: 500; }
+
+    /* Steps */
+    .steps { margin: 8px 0; }
+    .step {
+      display: flex;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--b);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      width: 28px; height: 28px;
+      background: var(--raised);
+      border: 1px solid var(--bhi);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--teal);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-text { font-size: 14px; color: var(--mid); }
+    .step-text strong { color: var(--hi); }
+
+    a { color: var(--blu); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer {
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: 1px solid var(--b);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px; font-weight: 800;
+    }
+    .footer-logo .a { color: var(--red); }
+    .footer-logo .sep { color: var(--lo); margin: 0 2px; }
+    .footer-logo .c { color: var(--teal); }
+    footer p { font-size: 12px; color: var(--lo); margin: 0; }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform: translateY(16px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav>
+    <a href="index.html" class="logo">
+      <span class="a">α</span><span class="sep">/</span><span class="c">C</span>
+    </a>
+    <div class="nav-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="support.html" class="active">Support</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-tag">Help</div>
+    <h1>Support</h1>
+    <p class="subtitle">Get help with Alpha Charlie</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Getting Started</div>
+    <h2>How to capture a match</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">Go to <strong>Settings</strong> and enter your name exactly as it appears in match results.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">Tap the <strong>+</strong> button on the Matches tab to open the in-app browser.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">Navigate to your match results page. The app will detect and import your results automatically.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">Tap <strong>Done</strong> when the capture completes to return to the dashboard.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Common Questions</div>
+    <h2>FAQ</h2>
+    <div class="faq-item">
+      <div class="faq-q">Why can't I find myself in the results?</div>
+      <p class="faq-a">Make sure your name in Settings matches exactly how it appears on the results page — spelling, spacing, and capitalization all matter.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">The app says "capture failed" — what do I do?</div>
+      <p class="faq-a">Navigate directly to the results page for your specific match (not the homepage) and wait for it to fully load before the app can detect the data.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I use Alpha Charlie for both USPSA and IDPA?</div>
+      <p class="faq-a">Yes — use the USPSA / IDPA toggle in the header to switch between sports. Each sport has its own match history and dashboard.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I back up my match data?</div>
+      <p class="faq-a">Go to Settings → Backup to export all your data to a file. You can save it to iCloud, Files, or share it anywhere. Use Restore to reload it.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does Alpha Charlie work with classifier results?</div>
+      <p class="faq-a">Alpha Charlie captures any match result page — classifiers, local matches, and major matches are all supported as long as results are posted online.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is my data private?</div>
+      <p class="faq-a">Yes — all data is stored only on your device. Nothing is sent to any server. See our <a href="privacy.html">Privacy Policy</a> for full details.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Contact</div>
+    <h2>Still need help?</h2>
+    <p>Send an email and we'll get back to you as soon as possible.</p>
+    <a href="/cdn-cgi/l/email-protection#34474144445b4640745558445c55575c5546585d515544441a575b59" class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <div>
+        <div class="contact-label">Email support</div>
+        <div class="contact-value"><span class="__cf_email__" data-cfemail="54272124243b2620143538243c35373c3526383d313524247a373b39">[email&#160;protected]</span></div>
+      </div>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-logo">
+      <span class="a">α</span><span class="sep"

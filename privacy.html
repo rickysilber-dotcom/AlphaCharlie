@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Alpha Charlie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06090f;
+      --card: #0d1220;
+      --raised: #131929;
+      --b: #1a2436;
+      --bhi: #263348;
+      --red: #e63946;
+      --teal: #2ec4b6;
+      --blu: #4895ef;
+      --hi: #f0f4ff;
+      --mid: #8899aa;
+      --lo: #506070;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--hi);
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* Grid background */
+    body::before {
+      content:'';
+      position:fixed; inset:0; z-index:0;
+      background-image:
+        linear-gradient(var(--b) 1px, transparent 1px),
+        linear-gradient(90deg, var(--b) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.5;
+      pointer-events:none;
+    }
+
+    /* Red glow */
+    body::after {
+      content:'';
+      position:fixed; top:-200px; left:-200px;
+      width:600px; height:600px; z-index:0;
+      background: radial-gradient(circle, #e6394618 0%, transparent 70%);
+      pointer-events:none;
+    }
+
+    .wrap {
+      position: relative; z-index:1;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* Nav */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 0 48px;
+      border-bottom: 1px solid var(--b);
+      margin-bottom: 56px;
+    }
+
+    .logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+    .logo .a { color: var(--red); }
+    .logo .sep { color: var(--lo); margin: 0 3px; }
+    .logo .c { color: var(--teal); }
+
+    .nav-links { display:flex; gap:24px; }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--mid);
+      text-decoration: none;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--hi); }
+    .nav-links a.active { color: var(--red); }
+
+    /* Header */
+    .page-header {
+      margin-bottom: 48px;
+      animation: fadeUp .5s ease both;
+    }
+    .page-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--red);
+      border: 1px solid #e6394630;
+      background: #e6394610;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(36px, 6vw, 52px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .updated {
+      font-size: 13px;
+      color: var(--lo);
+    }
+
+    /* Sections */
+    .section {
+      background: var(--card);
+      border: 1px solid var(--b);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 16px;
+      animation: fadeUp .5s ease both;
+    }
+    .section:nth-child(2) { animation-delay: .05s; }
+    .section:nth-child(3) { animation-delay: .1s; }
+    .section:nth-child(4) { animation-delay: .15s; }
+    .section:nth-child(5) { animation-delay: .2s; }
+    .section:nth-child(6) { animation-delay: .25s; }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--lo);
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--hi);
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
+    }
+    p {
+      color: var(--mid);
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    .highlight-box {
+      background: var(--raised);
+      border: 1px solid var(--bhi);
+      border-left: 3px solid var(--teal);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+    .highlight-box p {
+      color: var(--hi);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    ul {
+      list-style: none;
+      margin: 12px 0;
+    }
+    ul li {
+      color: var(--mid);
+      font-size: 15px;
+      padding: 6px 0 6px 20px;
+      position: relative;
+      border-bottom: 1px solid var(--b);
+    }
+    ul li:last-child { border-bottom: none; }
+    ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--lo);
+    }
+
+    a { color: var(--blu); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Footer */
+    footer {
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: 1px solid var(--b);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+    }
+    .footer-logo .a { color: var(--red); }
+    .footer-logo .sep { color: var(--lo); margin: 0 2px; }
+    .footer-logo .c { color: var(--teal); }
+    footer p { font-size: 12px; color: var(--lo); margin: 0; }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform: translateY(16px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav>
+    <a href="index.html" class="logo">
+      <span class="a">α</span><span class="sep">/</span><span class="c">C</span>
+    </a>
+    <div class="nav-links">
+      <a href="privacy.html" class="active">Privacy</a>
+      <a href="support.html">Support</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-tag">Legal</div>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: March 2026</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Overview</div>
+    <h2>Your data stays on your device</h2>
+    <div class="highlight-box">
+      <p>Alpha Charlie does not collect, transmit, or store any personal data on external servers. Everything stays on your iPhone.</p>
+    </div>
+    <p>Alpha Charlie is a match analytics app for USPSA and IDPA competitive shooters. We take privacy seriously. This policy explains what data the app uses and how it is handled.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Data Collection</div>
+    <h2>What we collect</h2>
+    <p>Alpha Charlie does not collect any personal information. The app does not require an account, does not connect to any server, and does not transmit any data over the internet.</p>
+    <p>The only data the app stores is:</p>
+    <ul>
+      <li>Your shooter name, which you optionally enter in Settings and is stored only on your device</li>
+      <li>Match results data that you capture from publicly available match results pages</li>
+      <li>App preferences such as theme and font size settings</li>
+    </ul>
+    <p>All of this data is stored exclusively in local device storage (UserDefaults) and never leaves your device.</p>
+    <p>If you purchase a subscription, all payment processing is handled entirely by Apple. Alpha Charlie never sees, receives, or stores your payment information. Purchase receipts are verified directly with Apple's StoreKit framework on your device.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Third Parties</div>
+    <h2>Third party sharing</h2>
+    <p>We do not share any data with third parties. There are no analytics SDKs, advertising frameworks, or tracking libraries in Alpha Charlie.</p>
+    <p>The app uses Google Fonts (Barlow) loaded from Google's CDN for typography within the dashboard interface. This is a standard web font request with no personal data attached.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Permissions</div>
+    <h2>Device permissions</h2>
+    <p>Alpha Charlie does not request access to your camera, microphone, contacts, or location.</p>
+    <p>The app requests access to your Photo Library only when you choose to save a match result share card to your device. This permission is requested at the moment you tap save and is never used for any other purpose.</p>
+    <p>The app uses an in-app browser to navigate to match results websites. No browsing history is stored by the app.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Your Rights</div>
+    <h2>Deleting your data</h2>
+    <p>You have full control over your data at all times. You can delete all stored match data at any time using <strong>Settings → Clear All Data</strong> within the app. Uninstalling the app removes all locally stored data permanently.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Contact</div>
+    <h2>Questions</h2>
+    <p>If you have any questions about this privacy policy, please reach out via the <a href="support.html">Support page</a>.</p>
+  </div>
+
+  <footer>
+    <div class="footer-logo">
+      <span class="a">α</span><span class="sep">/</span><span class="c">C</span> Alpha Charlie
+    </div>
+    <p>© 2026 Richard Silber. All rights reserved.</p>
+  </footer>
+
+</div>
+</body>
+</html>
